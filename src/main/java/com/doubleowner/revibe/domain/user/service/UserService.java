@@ -6,7 +6,6 @@ import com.doubleowner.revibe.domain.user.dto.request.UserProfileUpdateRequestDt
 import com.doubleowner.revibe.domain.user.dto.request.UserSignupRequestDto;
 import com.doubleowner.revibe.domain.user.dto.response.UserProfileResponseDto;
 import com.doubleowner.revibe.domain.user.dto.response.UserSignupResponseDto;
-import com.doubleowner.revibe.domain.user.entity.Role;
 import com.doubleowner.revibe.domain.user.entity.User;
 import com.doubleowner.revibe.domain.user.repository.UserRepository;
 import com.doubleowner.revibe.global.common.service.ImageService;
@@ -52,22 +51,17 @@ public class UserService {
             throw new CustomException(ErrorCode.ALREADY_EXIST);
         }
 
-        String profileImage = null;
-        if(requestDto.getProfileImage() != null) {
-                profileImage = imageService.uploadImage(profileImage, requestDto.getProfileImage());
-        }
-
         String encodedPassword = bCryptPasswordEncoder.encode(requestDto.getPassword());
 
         User user = new User(
                 requestDto.getEmail(),
                 requestDto.getNickname(),
                 encodedPassword,
-                profileImage,
                 requestDto.getAddress(),
-                requestDto.getPhoneNumber(),
-                Role.of(requestDto.getRole())
+                requestDto.getPhoneNumber()
         );
+        // todo 삭제 된 image 추가 기능 넣기
+
 
         User savedUser = userRepository.save(user);
 
@@ -140,13 +134,13 @@ public class UserService {
             throw new CustomException(ErrorCode.ILLEGAL_ARGUMENT);
         }
 
-        String profileImage = findUser.getProfileImage();
+        /*String profileImage = findUser.getProfileImage();
         if(requestDto.getProfileImage() != null) {
                 // 기존 이미지 삭제
                 imageService.deleteImage(findUser.getProfileImage());
                 // 새 이미지 업로드
                 profileImage = imageService.uploadImage(profileImage, requestDto.getProfileImage());
-        }
+        }*/
 
         String encodedPassword = bCryptPasswordEncoder.encode(requestDto.getPassword());
 
@@ -158,7 +152,6 @@ public class UserService {
                 findUser.getId(),
                 findUser.getNickname(),
                 findUser.getEmail(),
-                profileImage,
                 findUser.getAddress(),
                 findUser.getPhoneNumber(),
                 findUser.getStatus(),
@@ -180,7 +173,6 @@ public class UserService {
                 findUser.getId(),
                 findUser.getNickname(),
                 findUser.getEmail(),
-                findUser.getProfileImage(),
                 findUser.getAddress(),
                 findUser.getPhoneNumber(),
                 findUser.getStatus(),

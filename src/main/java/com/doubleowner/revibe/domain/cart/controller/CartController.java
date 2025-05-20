@@ -5,6 +5,7 @@ import com.doubleowner.revibe.domain.cart.service.CartService;
 import com.doubleowner.revibe.domain.user.entity.User;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/carts")
 @RequiredArgsConstructor
+@Tag(name = "장바구니 관련 API")
 public class CartController {
 
     private final CartService cartService;

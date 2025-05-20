@@ -5,6 +5,7 @@ import com.doubleowner.revibe.domain.payment.dto.PaymentResponseDto;
 import com.doubleowner.revibe.domain.payment.service.PaymentService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "결제 관련 API")
 public class PaymentController {
     private final PaymentService paymentService;
     @Value("${toss.widget-key}")

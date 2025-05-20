@@ -2,9 +2,9 @@ package com.doubleowner.revibe.domain.execution.contoller;
 
 import com.doubleowner.revibe.domain.execution.dto.ExecutionResponseDto;
 import com.doubleowner.revibe.domain.execution.service.ExecutionService;
-import com.doubleowner.revibe.domain.user.entity.User;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/executions")
+@Tag(name = "체결 관련 API")
 public class ExecutionController {
     private final ExecutionService executionService;
 

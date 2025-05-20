@@ -5,6 +5,7 @@ import com.doubleowner.revibe.domain.option.dto.response.OptionResponseDto;
 import com.doubleowner.revibe.domain.option.service.OptionService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/items")
 @RequiredArgsConstructor
+@Tag(name = "옵션 관련 API")
 public class OptionController {
 
     private final OptionService optionService;

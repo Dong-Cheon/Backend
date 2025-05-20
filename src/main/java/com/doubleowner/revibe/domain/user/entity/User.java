@@ -6,7 +6,6 @@ import com.doubleowner.revibe.domain.coupon.entity.IssuedCoupon;
 import com.doubleowner.revibe.domain.user.dto.request.UserProfileUpdateRequestDto;
 import com.doubleowner.revibe.global.common.BaseTimeEntity;
 import com.doubleowner.revibe.global.exception.CustomException;
-import com.doubleowner.revibe.global.exception.errorCode.ErrorCode;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -69,14 +68,13 @@ public class User extends BaseTimeEntity {
     public User() {
     }
 
-    public User(String email, String nickname, String password, String profileImage, String address, String phoneNumber, Role role) {
+    public User(String email, String nickname, String password ,String address, String phoneNumber) {
         this.email = email;
         this.nickname = nickname;
         this.password = password;
-        this.profileImage = profileImage;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.role = role;
+        role=Role.ROLE_USER;
     }
 
     public void deletedUser() {
@@ -87,7 +85,7 @@ public class User extends BaseTimeEntity {
     public void updateProfile(UserProfileUpdateRequestDto requestDto, String password) {
         this.nickname = requestDto.getNickname();
         this.password = password;
-        this.profileImage = requestDto.getProfileImage().toString();
+        /*this.profileImage = requestDto.getProfileImage().toString();*/
         this.address = requestDto.getAddress();
         this.phoneNumber = requestDto.getPhoneNumber();
     }

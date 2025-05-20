@@ -4,6 +4,7 @@ import com.doubleowner.revibe.domain.brand.dto.BrandRequestDto;
 import com.doubleowner.revibe.domain.brand.dto.BrandResponseDto;
 import com.doubleowner.revibe.domain.brand.service.BrandService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/brands")
 @RequiredArgsConstructor
+@Tag(name = "브랜드 관련 API")
 public class BrandController {
 
     private final BrandService brandService;

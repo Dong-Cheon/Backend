@@ -6,9 +6,9 @@ import com.doubleowner.revibe.domain.buybid.service.BuyBidService;
 import com.doubleowner.revibe.domain.user.entity.User;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/buy-bids")
 @RequiredArgsConstructor
+@Tag(name = "구매 입찰 관련 API")
 public class BuyBidController {
 
     private final BuyBidService bidService;

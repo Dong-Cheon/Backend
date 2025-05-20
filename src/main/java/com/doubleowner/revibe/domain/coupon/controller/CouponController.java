@@ -5,6 +5,7 @@ import com.doubleowner.revibe.domain.coupon.dto.response.CouponResponseDto;
 import com.doubleowner.revibe.domain.coupon.service.CouponService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/coupons")
 @RequiredArgsConstructor
+@Tag(name = "쿠폰 관련 API")
 public class CouponController {
 
     private final CouponService couponService;

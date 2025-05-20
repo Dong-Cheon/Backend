@@ -11,7 +11,10 @@ import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
 import com.doubleowner.revibe.global.config.dto.JwtAuthResponse;
 import com.doubleowner.revibe.global.exception.CustomException;
-import com.doubleowner.revibe.global.exception.errorCode.ErrorCode;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -28,6 +31,7 @@ import static com.doubleowner.revibe.global.exception.errorCode.ErrorCode.FORBID
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
+@Tag(name = "회원 관련 API")
 public class UserController {
 
     private final UserService userService;
@@ -38,8 +42,12 @@ public class UserController {
      * @return UserSignupResponseDto - 회원가입 완료 응답 dto
      */
     @PostMapping("/signup")
+    @Operation(summary = "회원가입", description = "회원 가입 api")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "회원가입 성공.")
+    })
     public ResponseEntity<CommonResponseBody<UserSignupResponseDto>> signUp(
-            @Valid @ModelAttribute UserSignupRequestDto requestDto) {
+            @Valid @RequestBody UserSignupRequestDto requestDto) {
         UserSignupResponseDto response = userService.signUpUser(requestDto);
         return new ResponseEntity<>(new CommonResponseBody<>("회원가입이 완료되었습니다.", response), HttpStatus.CREATED);
 
@@ -51,6 +59,7 @@ public class UserController {
      * @return JWT 토큰 응답
      */
     @PostMapping("/login")
+    @Operation(summary = "로그인",description = "로그인 api")
     public ResponseEntity<CommonResponseBody<JwtAuthResponse>> login(
             @Valid @RequestBody UserLoginRequestDto requestDto) {
 
@@ -62,7 +71,8 @@ public class UserController {
     /**
      * 회원 삭제
      */
-    @DeleteMapping()
+    @DeleteMapping
+    @Operation(summary = "회원탈퇴",description = "회원탈퇴 api")
     public ResponseEntity<CommonResponseBody<Void>> deleteUser(
             @RequestBody UserDeleteRequestDto requestDto,
             @AuthenticationPrincipal UserDetailsImpl userDetails,
@@ -87,8 +97,9 @@ public class UserController {
      * @return - 수정된 사용자 프로필 정보 응답
      */
     @PutMapping("/profile")
+    @Operation(summary = "프로필 수정",description = "프로필 수정 api")
     public ResponseEntity<CommonResponseBody<UserProfileResponseDto>> updateProfile(
-            @ModelAttribute UserProfileUpdateRequestDto requestDto,
+            @RequestBody UserProfileUpdateRequestDto requestDto,
             @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
         UserProfileResponseDto responseDto = userService.updateProfile(requestDto, userDetails);
@@ -102,6 +113,7 @@ public class UserController {
      * @return - 프로필 정보 응답
      */
     @GetMapping("/profile")
+    @Operation(summary = "프로필 조회",description = "프로필 조회 api")
     public ResponseEntity<CommonResponseBody<UserProfileResponseDto>> getProfile(
             @AuthenticationPrincipal UserDetailsImpl userDetails) {
 

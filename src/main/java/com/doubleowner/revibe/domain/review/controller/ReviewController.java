@@ -6,6 +6,7 @@ import com.doubleowner.revibe.domain.review.dto.UpdateReviewRequestDto;
 import com.doubleowner.revibe.domain.review.service.ReviewService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/reviews")
 @RequiredArgsConstructor
+@Tag(name = "리뷰 관련 API")
 public class ReviewController {
     private final ReviewService reviewService;
 

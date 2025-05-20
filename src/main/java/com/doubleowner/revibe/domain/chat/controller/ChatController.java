@@ -6,6 +6,7 @@ import com.doubleowner.revibe.domain.chat.dto.ChatRoomResponseDto;
 import com.doubleowner.revibe.domain.chat.dto.InviteUserDto;
 import com.doubleowner.revibe.domain.chat.service.ChatService;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "채팅 관련 API")
 public class ChatController {
     private final ChatService chatService;
     private final SimpMessagingTemplate messagingTemplate;

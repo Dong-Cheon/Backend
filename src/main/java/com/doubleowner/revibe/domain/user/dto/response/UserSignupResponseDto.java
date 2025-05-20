@@ -1,26 +1,26 @@
 package com.doubleowner.revibe.domain.user.dto.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserSignupResponseDto {
 
-    private final Long userId;
+    private Long userId;
 
-    private final String nickname;
+    private String nickname;
 
-    private final String email;
+    private String email;
 
-    private final String profileImage;
+    private String profileImage;
 
-    private final String address;
+    private String address;
 
-    private final String phoneNumber;
+    private String phoneNumber;
 
-    private final LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 
 }

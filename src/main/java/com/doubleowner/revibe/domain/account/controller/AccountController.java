@@ -5,6 +5,7 @@ import com.doubleowner.revibe.domain.account.dto.AccountResponseDto;
 import com.doubleowner.revibe.domain.account.service.AccountService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/accounts")
+@Tag(name = "회원 계좌 관련 API")
 public class AccountController {
     private final AccountService accountService;
 

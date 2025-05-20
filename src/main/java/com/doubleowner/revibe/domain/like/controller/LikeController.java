@@ -1,10 +1,11 @@
 package com.doubleowner.revibe.domain.like.controller;
 
-import com.doubleowner.revibe.domain.user.entity.User;
 import com.doubleowner.revibe.domain.like.dto.LikeResponseDto;
 import com.doubleowner.revibe.domain.like.service.LikeService;
+import com.doubleowner.revibe.domain.user.entity.User;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
+@Tag(name = "좋아요 관련 API")
 public class LikeController {
 
     private final LikeService likeService;
