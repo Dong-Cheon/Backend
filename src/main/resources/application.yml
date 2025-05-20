@@ -33,6 +33,8 @@ spring:
     redis:
       host: ${REDIS_HOST}
       port: 6379
+  elasticsearch:
+    uris: ${ELASTIC_SEARCH_URL}
 
 logging:
   level:
@@ -73,3 +75,9 @@ toss:
   client-key: ${TOSS_CLIENT_KEY}
   secret-key: ${TOSS_SECRET_KEY}
   widget-key: ${TOSS_WIDGET_KEY}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
