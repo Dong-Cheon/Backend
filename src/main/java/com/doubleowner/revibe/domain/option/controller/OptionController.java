@@ -5,6 +5,9 @@ import com.doubleowner.revibe.domain.option.dto.response.OptionResponseDto;
 import com.doubleowner.revibe.domain.option.service.OptionService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +27,11 @@ public class OptionController {
 
     // 옵션 등록
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping
-    @RequestMapping("/{itemId}/options")
+    @PostMapping("/{itemId}/options")
+    @Operation(summary = "상품 옵션 등록 API",description = "상품의 옵션을 등록 할 수 있습니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",description = "옵션 등록 성공하면 200 OK")
+    })
     public ResponseEntity<CommonResponseBody<OptionResponseDto>> createOption(
             @PathVariable Long itemId, @AuthenticationPrincipal UserDetailsImpl userDetails,
             @Valid @RequestBody OptionRequestDto requestDto)
