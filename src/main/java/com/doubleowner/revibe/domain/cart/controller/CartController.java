@@ -5,6 +5,9 @@ import com.doubleowner.revibe.domain.cart.service.CartService;
 import com.doubleowner.revibe.domain.user.entity.User;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,6 +27,10 @@ public class CartController {
 
     // 장바구니 담기
     @PostMapping
+    @Operation(summary = "장바구니 등록 API",description = "장바구니를 등록 할 수 있습니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",description = "장바구니 등록 성공하면 201 CREATED")
+    })
     public ResponseEntity<CommonResponseBody<CartResponseDto>> addCart(
             @RequestParam Long optionId,
             @AuthenticationPrincipal UserDetailsImpl userDetails)
@@ -35,6 +42,10 @@ public class CartController {
     }
     // 장바구니 조회
     @GetMapping
+    @Operation(summary = "장바구니 조회 API",description = "장바구니를 조회 할 수 있습니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "장바구니 조회 성공하면 200 OK")
+    })
     public ResponseEntity<CommonResponseBody<List<CartResponseDto>>> getCarts(
             @AuthenticationPrincipal UserDetailsImpl userDetails)
     {
@@ -46,6 +57,10 @@ public class CartController {
 
     // 장바구니 삭제
     @DeleteMapping
+    @Operation(summary = "장바구니 삭제 API",description = "장바구니를 삭제 할 수 있습니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "장바구니 삭제 성공하면 200 OK")
+    })
     public ResponseEntity<CommonResponseBody> deleteCart(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
             @RequestParam Long optionId)
