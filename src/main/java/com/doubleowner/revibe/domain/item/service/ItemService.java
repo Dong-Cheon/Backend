@@ -51,10 +51,10 @@ public class ItemService {
         }
 
         String image = null;
-        // 상품이미지 추가
+        /*// 상품이미지 추가
         if (hasImage(requestDto.getImage())) {
             image = imageService.uploadImage(image, requestDto.getImage());
-        }
+        }*/
 
         Item item = requestDto.toEntity(brand, image, loginUser);
 
@@ -71,12 +71,12 @@ public class ItemService {
 
         String image = item.getImage();
 
-        if (hasImage(requestDto.getImage())) {
+        /*if (hasImage(requestDto.getImage())) {
             image = imageService.uploadImage(image, requestDto.getImage());
             item.updateItem(requestDto, image);
             itemRepository.save(item);
             return ItemResponseDto.toDto(item);
-        }
+        }*/
 
         item.updateItem(requestDto, image);
 

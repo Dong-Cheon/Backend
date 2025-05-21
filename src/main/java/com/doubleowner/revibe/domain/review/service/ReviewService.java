@@ -43,9 +43,9 @@ public class ReviewService {
 
         String image = null;
 
-        if (hasImage(reviewRequestDto.getImage())) {
+        /*if (hasImage(reviewRequestDto.getImage())) {
             image = imageService.uploadImage(image, reviewRequestDto.getImage());
-        }
+        }*/
 
         Review review = ReviewRequestDto.toEntity(reviewRequestDto, payment, user, image);
 
@@ -79,10 +79,10 @@ public class ReviewService {
 
         // 이미지 관련 처리
         String image = null;
-        if (hasImage(updateReviewRequestDto.getImage())) {
+        /*if (hasImage(updateReviewRequestDto.getImage())) {
             image = imageService.uploadImage(review.getReviewImage(), updateReviewRequestDto.getImage());
-        }
-        pointService.handlePoint(userDetails.getUser(), review.getReviewImage(), updateReviewRequestDto.getImage());
+        }*/
+        //pointService.handlePoint(userDetails.getUser(), review.getReviewImage(), updateReviewRequestDto.getImage());
         // 필드 업데이트
         review.update(updateReviewRequestDto, image);
 
