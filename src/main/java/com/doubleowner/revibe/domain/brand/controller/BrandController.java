@@ -4,6 +4,9 @@ import com.doubleowner.revibe.domain.brand.dto.BrandRequestDto;
 import com.doubleowner.revibe.domain.brand.dto.BrandResponseDto;
 import com.doubleowner.revibe.domain.brand.service.BrandService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +27,10 @@ public class BrandController {
 
     // 브랜드 등록
     @PostMapping
+    @Operation(summary = "브랜드 등록 API",description = "관리자는 브랜드를 등록할 수 있습니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",description = "브랜드 등록 성공 하면 201 CREATED")
+    })
     public ResponseEntity<CommonResponseBody<BrandResponseDto>> createBrand(
             @Valid @RequestBody BrandRequestDto requestDto)
     {
