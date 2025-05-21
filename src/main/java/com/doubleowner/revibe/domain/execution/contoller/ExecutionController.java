@@ -4,6 +4,9 @@ import com.doubleowner.revibe.domain.execution.dto.ExecutionResponseDto;
 import com.doubleowner.revibe.domain.execution.service.ExecutionService;
 import com.doubleowner.revibe.global.common.dto.CommonResponseBody;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +22,7 @@ import java.util.List;
 public class ExecutionController {
     private final ExecutionService executionService;
 
-    //todo 마감 기한에 맞게 체결 생성되게
+    //todo 마감 기한에 맞게 체결 생성되게 // 스케줄러 적용
     @PostMapping
     public ResponseEntity<ExecutionResponseDto> createExecution(@RequestParam Long sellBidId, @RequestParam Long buyBidId) {
         ExecutionResponseDto execution = executionService.createExecution(sellBidId, buyBidId);
@@ -27,6 +30,10 @@ public class ExecutionController {
     }
 
     @GetMapping
+    @Operation(summary = "체결 내역 조회 API",description = "체결내역을 조회할 수 있습니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "체결내역을 조회 성공하면 200 OK")
+    })
     public CommonResponseBody<List<ExecutionResponseDto>> findExecution(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
             @RequestParam(value = "page", required = false, defaultValue = "0") int page,
