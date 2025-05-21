@@ -1,5 +1,6 @@
 package com.doubleowner.revibe.domain.review.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -14,14 +15,18 @@ public class UpdateReviewRequestDto {
     @NotNull(message = "별점은 필수 값입니다.")
     @Min(value = 0, message = "별점은 0 이상이어야 합니다.")
     @Max(value = 5, message = "별점은 5 이하이어야 합니다.")
+    @Schema(defaultValue = "1",description = "별점 입력 0~5점")
     private Integer starRate;
 
     @NotNull(message = "제목은 필수 값입니다.")
+    @Schema(defaultValue = "리뷰 제목",description = "리뷰 제목")
     private String title;
 
     @NotNull(message = "내용은 필수 값입니다.")
+    @Schema(defaultValue = "리뷰 내용",description = "리뷰 내용")
     private String content;
 
-    private MultipartFile image;
+    @Schema(defaultValue = "리뷰 이미지",description = "이미지 주소")
+    private String image;
 
 }
