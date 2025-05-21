@@ -32,7 +32,7 @@ public class Item extends BaseTimeEntity {
     @Column(nullable = false)
     private String description;
 
-    private String image;
+    private String imageUrl;
 
     @ColumnDefault("0")
     private Long likeCount;
@@ -45,7 +45,7 @@ public class Item extends BaseTimeEntity {
     @JoinColumn(name = "admin_id")
     private User user;
 
-    public void updateItem(ItemUpdateRequestDto requestDto,String image) {
+    public void updateItem(ItemUpdateRequestDto requestDto,String imageUrl) {
         if(requestDto.getName() != null && !requestDto.getName().isEmpty()) {
             this.name = requestDto.getName();
         }
@@ -56,7 +56,7 @@ public class Item extends BaseTimeEntity {
         if(requestDto.getDescription() != null && !requestDto.getDescription().isEmpty()) {
             this.description = requestDto.getDescription();
         }
-        this.image = image;
+        this.imageUrl = imageUrl;
     }
 
     public void setLikesCount(Long likesCount) {

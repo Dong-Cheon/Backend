@@ -31,13 +31,13 @@ public class ItemRequestDto {
     private String description;
 
     @NotNull(message = "상품 사진은 필수입니다")
-    @Schema(defaultValue = "상품에 대한 사진 주소",description = "사진 주소")
-    private String image;
+    @Schema(defaultValue = "상품에 대한 사진 주소",description = "이미지 등록 API 에서 받은 url로 등록")
+    private String imageUrl;
 
-    public Item toEntity(Brand brand, String image, User loginUser) {
+    public Item toEntity(Brand brand, String imageUrl, User loginUser) {
         return Item.builder()
                 .brand(brand)
-                .image(image)
+                .imageUrl(imageUrl)
                 .user(loginUser)
                 .category(Category.of(this.category))
                 .name(this.name)

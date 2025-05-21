@@ -8,7 +8,6 @@ import com.doubleowner.revibe.domain.user.dto.response.UserProfileResponseDto;
 import com.doubleowner.revibe.domain.user.dto.response.UserSignupResponseDto;
 import com.doubleowner.revibe.domain.user.entity.User;
 import com.doubleowner.revibe.domain.user.repository.UserRepository;
-import com.doubleowner.revibe.global.common.service.ImageService;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
 import com.doubleowner.revibe.global.config.dto.JwtAuthResponse;
 import com.doubleowner.revibe.global.exception.CustomException;
@@ -38,7 +37,7 @@ public class UserService {
     private final JwtProvider jwtProvider;
     private final AuthenticationManager authenticationManager;
     private final BCryptPasswordEncoder passwordEncoder;
-    private final ImageService imageService;
+    private final ImageService2 imageService;
 
     /**
      * 회원가입

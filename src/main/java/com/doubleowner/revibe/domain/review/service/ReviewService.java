@@ -9,10 +9,8 @@ import com.doubleowner.revibe.domain.review.dto.UpdateReviewRequestDto;
 import com.doubleowner.revibe.domain.review.entity.Review;
 import com.doubleowner.revibe.domain.review.repository.ReviewRepository;
 import com.doubleowner.revibe.domain.user.entity.User;
-import com.doubleowner.revibe.global.common.service.ImageService;
 import com.doubleowner.revibe.global.config.auth.UserDetailsImpl;
 import com.doubleowner.revibe.global.exception.CustomException;
-import com.doubleowner.revibe.global.exception.errorCode.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +30,7 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final PaymentRepository paymentRepository;
     private final PointService pointService;
-    private final ImageService imageService;
+    private final ImageService2 imageService;
 
 
     @Transactional

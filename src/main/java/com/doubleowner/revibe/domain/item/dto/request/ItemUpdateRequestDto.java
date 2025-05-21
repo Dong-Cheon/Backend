@@ -19,5 +19,5 @@ public class ItemUpdateRequestDto {
     private String description;
 
     @Schema(defaultValue = "상품에 대한 사진 주소",description = "사진 주소")
-    private String image;
+    private String imageUrl;
 }
