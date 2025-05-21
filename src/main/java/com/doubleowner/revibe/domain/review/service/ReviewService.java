@@ -30,8 +30,6 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final PaymentRepository paymentRepository;
     private final PointService pointService;
-    private final ImageService2 imageService;
-
 
     @Transactional
     public ReviewResponseDto write(ReviewRequestDto reviewRequestDto, User user) {
@@ -40,10 +38,6 @@ public class ReviewService {
                 .orElseThrow(() -> new CustomException(NOT_FOUND_VALUE));
 
         String image = null;
-
-        /*if (hasImage(reviewRequestDto.getImage())) {
-            image = imageService.uploadImage(image, reviewRequestDto.getImage());
-        }*/
 
         Review review = ReviewRequestDto.toEntity(reviewRequestDto, payment, user, image);
 
@@ -74,14 +68,7 @@ public class ReviewService {
     public void updateReview(Long id, UserDetailsImpl userDetails, UpdateReviewRequestDto updateReviewRequestDto) {
 
         Review review = getMyReview(id, userDetails.getUser());
-
-        // 이미지 관련 처리
         String image = null;
-        /*if (hasImage(updateReviewRequestDto.getImage())) {
-            image = imageService.uploadImage(review.getReviewImage(), updateReviewRequestDto.getImage());
-        }*/
-        //pointService.handlePoint(userDetails.getUser(), review.getReviewImage(), updateReviewRequestDto.getImage());
-        // 필드 업데이트
         review.update(updateReviewRequestDto, image);
 
     }
@@ -89,9 +76,7 @@ public class ReviewService {
     @Transactional
     public void deleteReview(Long id, User user) {
         Review review = getMyReview(id, user);
-        if (review.getReviewImage() != null) {
-            imageService.deleteImage(review.getReviewImage());
-        }
+
         pointService.deletePoint(user, review.getReviewImage());
         reviewRepository.delete(review);
     }
@@ -100,9 +85,6 @@ public class ReviewService {
         return reviewRepository.findMyReview(id, user.getId());
     }
 
-    private static boolean hasImage(MultipartFile multipartFile) {
-        return multipartFile != null && !multipartFile.isEmpty();
-    }
 
 
 }

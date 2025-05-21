@@ -37,7 +37,6 @@ public class UserService {
     private final JwtProvider jwtProvider;
     private final AuthenticationManager authenticationManager;
     private final BCryptPasswordEncoder passwordEncoder;
-    private final ImageService2 imageService;
 
     /**
      * 회원가입
@@ -111,11 +110,6 @@ public class UserService {
         if (!passwordEncoder.matches(requestDto.getPassword(), findUser.getPassword())) {
             throw new CustomException(ErrorCode.ILLEGAL_ARGUMENT);
         }
-
-        String profileImage = findUser.getProfileImage();
-        if(profileImage != null) {
-                imageService.deleteImage(findUser.getProfileImage());
-        }
         findUser.deletedUser();
     }
 
@@ -132,15 +126,6 @@ public class UserService {
         if (!passwordEncoder.matches(requestDto.getPassword(), findUser.getPassword())) {
             throw new CustomException(ErrorCode.ILLEGAL_ARGUMENT);
         }
-
-        /*String profileImage = findUser.getProfileImage();
-        if(requestDto.getProfileImage() != null) {
-                // 기존 이미지 삭제
-                imageService.deleteImage(findUser.getProfileImage());
-                // 새 이미지 업로드
-                profileImage = imageService.uploadImage(profileImage, requestDto.getProfileImage());
-        }*/
-
         String encodedPassword = bCryptPasswordEncoder.encode(requestDto.getPassword());
 
         findUser.updateProfile(requestDto, encodedPassword);

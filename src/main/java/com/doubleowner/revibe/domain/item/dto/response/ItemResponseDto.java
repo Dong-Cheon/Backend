@@ -15,7 +15,7 @@ public class ItemResponseDto {
 
     private Category category;
 
-    private String image;
+    private String imageUrl;
 
     private String brandName;
 
@@ -23,12 +23,12 @@ public class ItemResponseDto {
 
     private Long likeCount;
 
-    public ItemResponseDto(Long itemId, String name, String description, Category category, String image, String brandName, String adminName, Long likeCount) {
+    public ItemResponseDto(Long itemId, String name, String description, Category category, String imageUrl, String brandName, String adminName, Long likeCount) {
         this.itemId = itemId;
         this.name = name;
         this.description = description;
         this.category = category;
-        this.image = image;
+        this.imageUrl = imageUrl;
         this.brandName = brandName;
         this.adminName = adminName;
         this.likeCount = likeCount;
@@ -40,7 +40,7 @@ public class ItemResponseDto {
                 item.getName(),
                 item.getDescription(),
                 item.getCategory(),
-                item.getImage(),
+                item.getImageUrl(),
                 item.getBrand().getName(),
                 item.getUser().getNickname(),
                 item.getLikeCount()
