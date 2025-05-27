@@ -19,7 +19,7 @@ jobs:
 
       - name: 이름고정
         run: |
-          mv ./build/libs/*SNAPSHOT.jar ./book-0.0.1-SNAPSHOT.jar
+          mv ./build/libs/app.jar ./revibe-0.0.1-SNAPSHOT.jar
 
       - name: 빌드된 파일 전송 전 기존 jar 삭제
         uses: appleboy/ssh-action@v1.0.3
