@@ -30,7 +30,7 @@ public class WebConfig {
     private final AuthenticationEntryPoint authenticationEntryPoint;
     private final AccessDeniedHandler accessDeniedHandler;
 
-    private static final String[] WHITE_LIST = {"/api/users/**", "/oauth2/**", "/login/oauth2/code/**", "/oauth/authorize","/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html"};
+    private static final String[] WHITE_LIST = {"/swagger-ui/**", "api-docs/**", "/v3/api-docs/**","/api/users/**", "/oauth2/**", "/login/oauth2/code/**", "/oauth/authorize","/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html"};
     private static final String[] ADMIN_ONLY_URLS = {"/api/brands", "/api/coupons/**"};
 
     @Bean
