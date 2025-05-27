@@ -28,7 +28,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME}}
           key: ${{ secrets.EC2_PRIVATE_KEY}}
           script: |
-            rm -f /home/ubuntu/book-0.0.1-SNAPSHOT.jar
+            rm -f /home/ubuntu/revibe-0.0.1-SNAPSHOT.jar
 
       - name: SCP로 EC2에 빌드된 파일 전송
         uses: appleboy/scp-action@v0.1.7
@@ -36,7 +36,7 @@ jobs:
           host: ${{ secrets.EC2_HOST}}
           username: ${{ secrets.EC2_USERNAME}}
           key: ${{ secrets.EC2_PRIVATE_KEY}}
-          source: ./book-0.0.1-SNAPSHOT.jar
+          source: ./revibe-0.0.1-SNAPSHOT.jar
           target: /home/ubuntu/
 
       - name: ssh->ec2로 접속
