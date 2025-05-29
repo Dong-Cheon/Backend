@@ -17,7 +17,7 @@ public class SwaggerConfig {
     private static final String TITLE = "revibe 프로젝트 API 명세서";
     private static final String SECURITY_SCHEME_NAME ="Bearer Authentication";
 
-    @Value("${springdoc.swagger-ui.url}")
+    @Value("${SERVER_IP}")
     private String url;
 
     @Bean

@@ -87,4 +87,4 @@ management:
 
 springdoc:
   swagger-ui:
-    url: "${SERVER_IP}"
+    url: /v3/api-docs
